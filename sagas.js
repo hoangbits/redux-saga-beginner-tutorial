@@ -1,13 +1,13 @@
-import { put, takeEvery, all } from "redux-saga/effects";
+import { put, takeEvery, call } from "redux-saga/effects";
 
 export function* helloSaga() {
   console.log("Hello saga");
 }
 
-const delay = ms => new Promise(res => setTimeout(res, ms));
+export const delay = ms => new Promise(res => setTimeout(res, ms));
 
 export function* incrementAsync() {
-  yield delay(1000);
+  yield call(delay, 1000);
   yield put({ type: "INCREMENT" });
 }
 
